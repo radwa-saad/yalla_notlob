@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6 text-center my-5 p-3">
+        <div class="col-md-6 text-center m-5 p-3 latestOrder">
             <h2>Latest Orders</h2>
             <div>
                 @foreach($latest_orders as $latest_order)
@@ -14,7 +14,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-md-6 text-center my-5 p-3 ">
+        <div class="col-md-6 text-center m-5 p-3  frindActivity">
             <h2>Frindes Activity</h2>
             <div>
                 @foreach($latest_orders as $latest_order)

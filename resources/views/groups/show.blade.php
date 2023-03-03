@@ -20,7 +20,7 @@
     </div>
 
     <div class="row py-5 justify-content-center">
-        <div class="col-3 border py-3 mx-4 ">
+        <div class="col-4  py-3 mx-4 ">
             <div class="row ">
                 @foreach ($user->groups as $group)
                     <p class="col-3 py-2">{{$group->name}}</p>
@@ -48,7 +48,7 @@
                         @csrf
                         <select name="friends" id=""  class="form-select" aria-label="Default select example">
                             @foreach($friends as $friend)
-                              <option value="{{$friend->id}}">{{$friend->email}}</option>
+                              <option value="{{$friend->id}}">{{$friend->name}}</option>
                             @endforeach
                           </select>
                         <div class="modal-footer">
@@ -63,14 +63,23 @@
 
         <div class="col-7 border">
             <div class="row my-3 justify-content-around">
-                <p class="col-3 h5">Friends Name</p>
-                <input type="text" name="" id="" class="col-5">
-                <input type="button" value="Add" class="col-2 btn btn-success">
+                <p class="col-3 h5">Friend Name</p>
+                <form action="{{route('groups.store1')}}" method="POST" class="col-9 row justify-content-btween">
+                    @csrf
+                    <select name="friends" id="" style="border-radius: 10px;"  class="col-7 mx-3" aria-label="Default select example ">
+                        @foreach($friends as $friend)
+                          <option value="{{$friend->id}}">{{$friend->name}}</option>
+                        @endforeach
+                    </select>
+                    <input type="hidden" name="group_id" id='group_id' class="col-1">
+                    <input type="submit" value="Add" name="" data-bs-dismiss="modal" class="col-2 btn btn-success text-item-center">
+                  
+                </form>
             </div>
 
             <div class="row my-3 justify-content-around">
                 @foreach($group_friends as $friend)
-                <p class="col-2">{{$friend->email}}</p>
+                <p class="col-2">{{$friend->name}}</p>
                 @endforeach
             </div>
         </div>

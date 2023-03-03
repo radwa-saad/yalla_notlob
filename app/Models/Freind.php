@@ -10,7 +10,7 @@ class Freind extends Model
 {
     use HasFactory;
     protected $table="friend_user";
-    protected $fillable=["email","user_id"];
+    protected $fillable=["name" ,"email","user_id"];
 
     // public function users(){
     //     return $this->belongsToMany(User::class);

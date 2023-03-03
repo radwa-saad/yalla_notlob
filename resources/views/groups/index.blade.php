@@ -7,7 +7,8 @@
         <p class="col-1">Groups</p>
         <form action="{{route('groups.store')}}" method="POST" class="col-8 justify-content-btween">
             @csrf
-            <input type="text" name="name" id="" class="col-7 form-control my-2">
+            
+            <input type="text" name="name" id="" class="col-7 form-control my-2 w-50">
             @if($errors->has('name'))
             <div class="alert alert-danger">
                 <ul>
@@ -20,7 +21,7 @@
     </div>
 
     <div class="row py-5 justify-content-center">
-        <div class="col-3 border py-3 mx-4 ">
+        <div class="col-8 py-3 mx-4 ">
             <div class="row ">
                 @foreach ($user->groups as $group)
                     <p class="col-3 py-2">{{$group->name}}</p>
@@ -31,6 +32,7 @@
                         @method('delete')
                         <input  type='submit' class="btn btn-danger" value="delete" onclick="return confirm('Are you sure you want to delete this group? ') ">
                     </form>
+                    <hr>
                 @endforeach
             </div>
         </div>
@@ -39,8 +41,8 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add your Group member</h5>
+                <div class="modal-header navo">
+                    <h5 class="modal-title " id="exampleModalLabel">Add your Group member</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -48,7 +50,7 @@
                         @csrf
                         <select name="friends" id=""  class="form-select" aria-label="Default select example">
                             @foreach($friends as $friend)
-                              <option value="{{$friend->id}}">{{$friend->email}}</option>
+                              <option value="{{$friend->id}}">{{$friend->name}}</option>
                             @endforeach
                           </select>
                         <div class="modal-footer">
