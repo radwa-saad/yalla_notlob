@@ -40,16 +40,16 @@
                 <div class="mb-3">
                 <p class="fs-5">You can write a friend name or group</p>
                 <label for="exampleInputPassword1" class="form-label">Friends</label>
-                <select name="friends" id=""  class="form-select" aria-label="Default select example">
+                <select name="friend_id"  class="form-select" aria-label="Default select example">
                     @foreach($friends as $friend)
                     <option value="{{$friend->id}}">{{$friend->email}}</option>
                     @endforeach
                 </select>
                 </div>
-                @if($errors->has('friends'))
+                @if($errors->has('friend_id'))
                     <div class="alert alert-danger">
                     <ul>
-                    <li>{{$errors->first('friends')}}</li>
+                    <li>{{$errors->first('friend_id')}}</li>
                     </ul>
                     </div>
                     @endif
@@ -68,9 +68,17 @@
             </form>
         </div>
 
+            <h1>Friends Invited</h1>
+            <div>
+                @foreach($friends_order as $friend_order)
+                <p>{{$friend_order->friend_id}}</p>
+                @endforeach
+            </div>
+       
             </div>
         </div>
-   
+
+
 
 
 

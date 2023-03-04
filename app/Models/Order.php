@@ -13,9 +13,9 @@ class Order extends Model
     public function orders(){
         return $this->hasOne(Order::class);
     }
-    public function friend_order()
+    public function friends()
     {
-        return $this->belongsToMany(Friend_order::class);
+        return $this->belongsToMany(Friend::class);
     }
 
 }

@@ -25,6 +25,7 @@ class OrderController extends Controller
         // dd($user);
         $friends =DB::table('friend_user')->where('user_id',auth()->id())->get();
         $friends_order =DB::table('friend_order')->where('user_id',auth()->id())->get();
+       
         return view('orders.index',compact('user','friends','friends_order'));
     }
 
@@ -57,7 +58,7 @@ class OrderController extends Controller
             $order =Order::create($data);
             $myFriend =new Friend_order();
             $myFriend->order_id=$order->id;
-            $myFriend->friends=$request->friends;
+            $myFriend->friend_id=$request->friend_id;
             // dd($myFriend->friends);
             $myFriend->save();
             return  to_route('orders.index');
