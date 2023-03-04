@@ -24,8 +24,13 @@ body{
     width:40% !important ;
 }
 .frind{
-    width: 60% !important;
+    width: 80% !important;
 
+}
+.frinimg{
+    border-radius:50% !important ;
+    width: 70px !important;
+    height: 50px !important;
 }
 .detail{
     color: #ff0000 !important;
@@ -51,4 +56,8 @@ body{
     width:90% !important ;
     border-radius: 50% !important;
 
+}
+.cool{
+    border-radius: 10px !important;
+    padding: 2rem !important;
 }
