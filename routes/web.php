@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\OrderDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::resource('groups', GroupsController::class);
 Route::resource('friends', FreindsController::class);
 
 Route::resource('orders', OrderController::class);
-
+Route::resource('orderdetails', OrderDetailsController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

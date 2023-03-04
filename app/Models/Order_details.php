@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order_details extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id','item' , 'quantity','price' , 'order_id'];
     public function order_details(){
-        return $this->hasOne(Order_details::class);
+        return $this->hasOne(Order::class);
     }
 }
