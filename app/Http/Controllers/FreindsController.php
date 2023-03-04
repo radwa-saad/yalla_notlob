@@ -23,20 +23,30 @@ class FreindsController extends Controller
 
     public function store(StoreFreindsRequest $request){
 
-         $request->validate([
-            'name'=>'required',
-            'email'=>'required',
-            ]);
-
-        $logged_in_user =Auth::user()->id;
-        $data = $request->all();
-        $data['user_id']=$logged_in_user;
-        Freind::create($data);
-        //return "added";
-        return to_route('friends.index');
+    //     $validatedData = $request->validated();
+    //  $file = $request->file('image');
+    //  $ext = $file->getClientOriginalExtension();
+    //  $filename = time().'.'.$ext;
+    //  $file->move('uploads/friend/',$filename);
+    //  $validatedData['image']="uploads/friend/$filename";
+    //  $logged_in_user =Auth::user()->id;
+    //  $data = $request->all();
+    //  $data['user_id']=$logged_in_user;
+    //     Freind::create($data);
+    //     //return "added";
+    //     return to_route('friends.index');
+    $validatedData = $request->validated();
+    $file = $request->file('image');
+    $ext = $file->getClientOriginalExtension();
+    $filename = time().'.'.$ext;
+    $file->move('uploads/friend/',$filename);
+    $validatedData['image']="uploads/friend/$filename";
+    Freind::create(['user_id' => auth()->id(),'email' => $validatedData['email'],'name' => $validatedData['name'],
+    'image' => $validatedData['image']]);
+    //  return "added";
         // $freind=Freind::create($request->all());
-        // DB::table('friend_user')->insert(['user_id' => auth()->id(),'email' => $freind->email]);
-        // return to_route('friends.index');
+        // // DB::table('friend_user')->insert(['user_id' => auth()->id(),'email' => $freind->email]);
+        return to_route('friends.index');
     }
         /**
      * Display a listing of the resource.

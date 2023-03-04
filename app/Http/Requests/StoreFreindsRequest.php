@@ -23,6 +23,21 @@ class StoreFreindsRequest extends FormRequest
     {
         return [
             //
+            'name'=>[
+                'required',
+                'string',
+                'max:255'
+            ],
+            'email'=>[
+                'required',
+                'string',
+                'max:255'
+            ],
+            'image'=>[
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png'
+            ],
         ];
     }
 }

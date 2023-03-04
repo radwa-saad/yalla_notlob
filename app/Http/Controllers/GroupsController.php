@@ -79,6 +79,7 @@ class GroupsController extends Controller
         $group_friend->save();
         //DB::table('group_friend')->insert(['user_id' => auth()->id(),'group_id'=> $group_friend->id]);
 
-        return "added";
+        // return "added";
+        return to_route('groups.index' );
     }
 }
