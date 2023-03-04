@@ -36,14 +36,20 @@
                             </ul>
                         </div>
                     @endif
-                    <div class="mb-3">
-                        <p class="fs-5">You can write a friend name or group</p>
-                        <label for="exampleInputPassword1" class="form-label">Friends</label>
-                        <select name="friends" id="" class="form-select" aria-label="Default select example">
-                            @foreach ($friends as $friend)
-                                <option value="{{ $friend->id }}">{{ $friend->email }}</option>
-                            @endforeach
-                        </select>
+                <div class="mb-3">
+                <p class="fs-5">You can write a friend name or group</p>
+                <label for="exampleInputPassword1" class="form-label">Friends</label>
+                <select name="friend_id"  class="form-select" aria-label="Default select example">
+                    @foreach($friends as $friend)
+                    <option value="{{$friend->id}}">{{$friend->email}}</option>
+                    @endforeach
+                </select>
+                </div>
+                @if($errors->has('friend_id'))
+                    <div class="alert alert-danger">
+                    <ul>
+                    <li>{{$errors->first('friend_id')}}</li>
+                    </ul>
                     </div>
                     @if ($errors->has('friends'))
                         <div class="alert alert-danger">
@@ -52,20 +58,33 @@
                             </ul>
                         </div>
                     @endif
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Menu Image</label>
-                        <input type="file" name="menu_image" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    @if ($errors->has('menu_image'))
-                        <div class="alert alert-danger">
-                            <ul>
-                                <li>{{ $errors->first('menu_image') }}</li>
-                            </ul>
-                        </div>
-                    @endif
-                    <button type="submit" class="btn btn-primary">Publish</button>
-                </form>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Menu Image</label>
+                <input type="file" name="menu_image" class="form-control" id="exampleInputPassword1">
+                </div>
+                @if($errors->has('menu_image'))
+                <div class="alert alert-danger">
+                <ul>
+                <li>{{$errors->first('menu_image')}}</li>
+                </ul>
+                </div>
+                @endif
+                <button type="submit" class="btn btn-primary">Publish</button>
+            </form>
+        </div>
+
+            <h1>Friends Invited</h1>
+            <div>
+                @foreach($friends_order as $friend_order)
+                <p>{{$friend_order->friend_id}}</p>
+                @endforeach
+            </div>
+
             </div>
         </div>
-    </div>
+
+
+
+
+
 @endsection
