@@ -50,7 +50,7 @@
     <h1 class="mt-5">Your Friends List</h1>
     <div style="border:1px solid rgb(212, 207, 207);height:400px;width:800px; overflow:scroll" class="px-2">
         @foreach ($user->friends as $friend)
-        <span class="">
+        <span class="mx-5">
         <img class="mb-5" src="{{asset("$friend->image")}}" alt="friend"
         style="width:70px; height:70px">
         <span class="col-4 mx-1">{{$friend->name}}</span>

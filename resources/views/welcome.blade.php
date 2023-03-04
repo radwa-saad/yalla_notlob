@@ -3,7 +3,7 @@
 @section('content')
 <div class="all" >
     <p class="add ">
-        Ylaa Notlop 
+        Yalla Notlob
     </p>
 </div>
 @endsection
