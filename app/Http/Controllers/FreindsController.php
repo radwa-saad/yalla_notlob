@@ -24,6 +24,7 @@ class FreindsController extends Controller
     public function store(StoreFreindsRequest $request){
 
          $request->validate([
+            'name'=>'required',
             'email'=>'required',
             ]);
 

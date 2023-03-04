@@ -1,0 +1,29 @@
+body{
+   background-color: black !important;
+   color: white !important
+}
+.navo{
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+}
+.colo{
+    color: white;
+    font-weight: bold !important;
+}
+.latestOrder{
+    background-color:#ff0000 !important ;
+    color:  white !important;
+    border-radius: 20px !important;
+    width:40% !important ;
+}
+.frindActivity{
+    background-color:#ff0000 !important ;
+    color:  white !important;
+    border-radius: 20px !important;
+    width:40% !important ;
+}
+.frind{
+    width: 60% !important;
+
+}
