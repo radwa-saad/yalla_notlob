@@ -79,12 +79,12 @@
 
             <div class="row my-3 justify-content-around">
                 @foreach ($group_friends as $friend)
-                <span class="mx-5">
+                <div class="mx-5 col-3 row">
                 <img class="mb-5" src="{{asset("$friend->image")}}" alt="friend"
-                style="width:70px; height:70px">
-                <span class="col-4 mx-1">{{$friend->name}}</span>
+                style="width:70px; height:70px;border-raduis:50%;">
+                <p class=" mx-1">{{$friend->name}}</p>
 
-                </span>
+                </div>
                @endforeach
             </div>
         </div>

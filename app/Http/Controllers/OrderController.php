@@ -22,6 +22,7 @@ class OrderController extends Controller
     {
         //
         $user = User::find(auth()->id());
+        // dd($user);
         $friends =DB::table('friend_user')->where('user_id',auth()->id())->get();
         $friends_order =DB::table('friend_order')->where('user_id',auth()->id())->get();
 

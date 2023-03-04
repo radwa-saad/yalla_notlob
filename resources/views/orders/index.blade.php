@@ -40,6 +40,7 @@
           <p class="fs-5">You can write a friend name or group</p>
           <label for="exampleInputPassword1" class="form-label">Friends</label>
           <select name="friends" id=""  class="form-select" aria-label="Default select example">
+
             @foreach($friends as $friend)
               <option value="{{$friend->id}}">{{$friend->name}}</option>
             @endforeach
@@ -79,7 +80,7 @@
 <h1>Friends Invited</h1>
 {{-- {{dd($orders)}} --}}
 <div>
-@foreach($friends_order as $friend_order)
+@foreach($user->$friends_order as $friend_order)
 <p>{{$friend_order->friends}}</p>
 @endforeach
 </div>
