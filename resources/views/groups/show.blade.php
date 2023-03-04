@@ -73,14 +73,19 @@
                     </select>
                     <input type="hidden" name="group_id" id='group_id' class="col-1">
                     <input type="submit" value="Add" name="" data-bs-dismiss="modal" class="col-2 btn btn-success text-item-center">
-                  
+
                 </form>
             </div>
 
             <div class="row my-3 justify-content-around">
-                @foreach($group_friends as $friend)
-                <p class="col-2">{{$friend->name}}</p>
-                @endforeach
+                @foreach ($group_friends as $friend)
+                <span class="mx-5">
+                <img class="mb-5" src="{{asset("$friend->image")}}" alt="friend"
+                style="width:70px; height:70px">
+                <span class="col-4 mx-1">{{$friend->name}}</span>
+
+                </span>
+               @endforeach
             </div>
         </div>
     </div>
