@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('friend_order', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('friends');
+            $table->unsignedBigInteger('friend_id');
             $table->unsignedBigInteger('order_id');
+            $table->string('friends');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('friend_id')->references('id')->on('friend_user')->onDelete('cascade');
             $table->timestamps();
         });
     }
