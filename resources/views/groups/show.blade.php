@@ -83,14 +83,13 @@
                 </form>
             </div>
 
-            <div class="my-3 justify-content-around p-2 pt-5 row">
+            <div class="my-3 justify-content-around p-2 row">
                 @foreach ($group_friends as $friend)
 
-                <div class="row col-4">
-                    <img class="mb-5 col-5 frinimg" src="{{asset("$friend->image")}}" alt="friend">
-                    <p class="col-6 pt-3 mx-1">{{$friend->name}}</p>
-
-                </div>
+                <div class="row col-3">
+                    <img class="mb-5 col-6 frinimg" src="{{asset("$friend->image")}}" alt="friend">
+                    <p class="col-4  col-6 pt-3">{{$friend->name}}</p>
+                   </div>
                @endforeach
             </div>
         </div>

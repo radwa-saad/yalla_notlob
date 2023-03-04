@@ -5,10 +5,12 @@
     <p class="h1">Groups</p>
     <div class="row pt-5 justify-content-center">
         <p class="col-1">Groups</p>
-        <form action="{{route('groups.store')}}" method="POST" class="col-8 justify-content-btween">
+        <form action="{{route('groups.store')}}" method="POST" class="col-8 row justify-content-btween">
             @csrf
-            
-            <input type="text" name="name" id="" class="col-7 form-control my-2 w-50">
+            <div class="col-7">
+                <input type="text" name="name" id="" class="col-6 form-control my-2">
+           
+            </div>
             @if($errors->has('name'))
             <div class="alert alert-danger">
                 <ul>
@@ -16,7 +18,10 @@
                 </ul>
             </div>
             @endif
-            <input type="submit" value="Add" name=""  class="col-2 btn btn-success text-item-center">
+            <div class="col-5 pt-2">
+                
+            <input type="submit" value="Add" name=""  class=" btn btn-success text-item-center">
+            </div>
         </form>
     </div>
 

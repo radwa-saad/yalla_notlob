@@ -41,7 +41,7 @@
                 </div>
                 @endif
                 <input type="hidden" name="user_id" value="{{auth()->id()}}">
-                <input type="submit" value="Add" name=""  class="col-4 m-auto btn btn-success">
+                <input type="submit" value="Add" name=""  class="col-4 m-auto btn butt">
 
 
 
