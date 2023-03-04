@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="row ">
+        <div class="col-12 col-md-7 ">
+            <div class="card detail">
+                <div class="card-header navo">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -63,7 +63,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn navo">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -71,6 +71,9 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="col-12 col-md-5 image">
+            <img src=" {{ asset('images/log.jpg')}}" class="eat" width="30%" height="100%">
         </div>
     </div>
 </div>
