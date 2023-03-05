@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="p-3 px-5 ">
     <p class="h1">Groups</p>
-    <div class="row pt-5 justify-content-center">
-        <p class="col-1">Groups</p>
-        <form action="{{route('groups.store')}}" method="POST" class="col-8 justify-content-btween">
+    <div class="row pt-3 justify-content-center">
+        <p class="col-1 pt-3">Groups</p>
+        <form action="{{route('groups.store')}}" method="POST" class="col-8 row justify-content-btween">
             @csrf
-            <input type="text" name="name" id="" class="col-7 form-control my-2">
+            <div class="col-7">
+                <input type="text" name="name" id="" class="col-6 form-control my-2">
+           
+            </div>
             @if($errors->has('name'))
             <div class="alert alert-danger">
                 <ul>
@@ -15,7 +18,10 @@
                 </ul>
             </div>
             @endif
-            <input type="submit" value="Add" name=""  class="col-2 btn btn-success text-item-center">
+            <div class="col-5 pt-2">
+                
+            <input type="submit" value="Add" name=""  class=" btn btn-success text-item-center">
+            </div>
         </form>
     </div>
 
@@ -61,7 +67,7 @@
         </div>
     </div>
 
-        <div class="col-7 border">
+        <div class="col-7 border cool">
             <div class="row my-3 justify-content-around">
                 <p class="col-3 h5">Friend Name</p>
                 <form action="{{route('groups.store1')}}" method="POST" class="col-9 row justify-content-btween">
@@ -77,14 +83,13 @@
                 </form>
             </div>
 
-            <div class="row my-3 justify-content-around">
+            <div class="my-3 justify-content-around p-2 row">
                 @foreach ($group_friends as $friend)
-                <div class="mx-5 col-3 row">
-                <img class="mb-5" src="{{asset("$friend->image")}}" alt="friend"
-                style="width:70px; height:70px;border-raduis:50%;">
-                <p class=" mx-1">{{$friend->name}}</p>
 
-                </div>
+                <div class="row col-3">
+                    <img class="mb-5 col-6 frinimg" src="{{asset("$friend->image")}}" alt="friend">
+                    <p class="col-4  col-6 pt-3">{{$friend->name}}</p>
+                   </div>
                @endforeach
             </div>
         </div>
