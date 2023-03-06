@@ -8,6 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\OrderDetailsController;
+use App\Http\Controllers\AllOrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+// route::get('invitation', [OrderController::class,"invitation"]);
 
 Route::post('/groups/store1', [GroupsController::class, 'store1'])->name('groups.store1');
 route::get('group-friends/{id}', [GroupsController::class,"show"])->name('group.show');
@@ -33,7 +35,8 @@ Route::resource('groups', GroupsController::class);
 Route::resource('friends', FreindsController::class);
 
 Route::resource('orders', OrderController::class);
-Route::resource('orderdetails', OrderDetailsController::class);
+Route::resource('orderdetails', OrderDetailsController::class)->middleware('auth');
+Route::resource('allorders', AllOrdersController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

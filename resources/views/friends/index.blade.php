@@ -51,10 +51,10 @@
             </form>
         </div>
     <h1 class="mt-5">Your Friends List</h1>
-    <div style="border:1px solid rgb(212, 207, 207);" class="p-2 row">
+    <div class="p-2 row freindlist">
 
         @foreach ($user->friends as $friend)
-       <div class="row col-3">
+       <div class="row col-4">
         <img class="mb-5 col-6 frinimg" src="{{asset("$friend->image")}}" alt="friend">
         <p class="col-4  col-6 pt-3">{{$friend->name}}</p>
        </div>

@@ -25,16 +25,21 @@ class OrderController extends Controller
         // dd($user);
         $friends =DB::table('friend_user')->where('user_id',auth()->id())->get();
         $friends_order =DB::table('friend_order')->where('user_id',auth()->id())->get();
+        $orders=Order::all();
 
-        return view('orders.index',compact('user','friends','friends_order'));
+        return view('orders.index',compact('user','friends','friends_order','orders'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         //
+        $user = User::find(auth()->id());
+        $orders=Order::all();
+
+        return view('orders.orders',compact('user','orders'));
     }
 
     /**
@@ -61,20 +66,27 @@ class OrderController extends Controller
             $myFriend->friend_id=$request->friend_id;
             // dd($myFriend->friends);
             $myFriend->save();
-            return  to_route('orders.index');
+            return  to_route('orders.create');
     }
 
-    public function show(Order $order): Response
+    public function show(Order $order)
     {
         //
+        if($order){
+            return view('orders.orderDetails',$data=['order'=>$order]);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order): Response
+    public function edit(Order $order)
     {
         //
+        $order->status = 'finished';
+        $order->save();
+        $orders = Order::where('user_id',auth()->id())->get();
+        return redirect()->back()->with('message', 'Your Order has been updated successfully!');
     }
 
     /**
@@ -88,8 +100,12 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order): RedirectResponse
+    public function destroy(Order $order)
     {
         //
+        $order->status = 'cancel';
+        $order->save();
+        $order->delete();
+        return redirect()->back()->with('message','Your Order has been Cancelled successfully!');
     }
 }

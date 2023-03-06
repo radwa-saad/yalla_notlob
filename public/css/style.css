@@ -1,14 +1,19 @@
 body{
-   background-color: black !important;
+    background-image: url(../images/22.jpg);
+    background-size: cover;
    color: white !important
 }
+.all{
+    height:100vh !important;
+    background-color: rgba(0,0,0,0.6);
+}
 .navo{
-    background-color: #ff0000 !important;
+    background-color: #f71414 !important;
     color: white !important;
     font-weight: bold !important;
 }
 .butt{
-    background-color: #ff0000 !important;
+    background-color: #f71414 !important;
     color: white !important;
     font-weight: bold !important;
     border-radius: 10px !important;
@@ -18,14 +23,20 @@ body{
     font-weight: bold !important;
 }
 .latestOrder{
-    background-color:#ff0000 !important ;
-    color:  white !important;
+    color: black !important;
     border-radius: 20px !important;
     width:40% !important ;
 }
+.textbody{
+    color: black;
+}
+.home{
+    color:#f71414 !important ;
+}
+
+
 .frindActivity{
-    background-color:#ff0000 !important ;
-    color:  white !important;
+   color:#f71414 !important ;
     border-radius: 20px !important;
     width:40% !important ;
 }
@@ -39,7 +50,7 @@ body{
     height: 50px !important;
 }
 .detail{
-    color: #ff0000 !important;
+    color: #f71414 !important;
     width:80% !important ;
     margin-top: 6rem !important;
 }
@@ -49,9 +60,9 @@ body{
 .social{
     width: 100% !important;
     margin-left: 15% !important;
-    border: 1px solid #ff0000 !important;
+    border: 1px solid #f71414 !important;
     border-radius: 10px;
-    color: #ff0000 !important;
+    color: #f71414 !important;
     font-weight: bolder !important;
 }
 .image{
@@ -66,4 +77,12 @@ body{
 .cool{
     border-radius: 10px !important;
     padding: 2rem !important;
+    border-radius: 20px !important;
+    border: #f71414 1px solid;
+    background-color: rgba(0,0,0,0.7);
+}
+.freindlist{
+    border-radius: 20px !important;
+    border: #f71414 1px solid;
+    background-color: rgba(0,0,0,0.7);
 }
