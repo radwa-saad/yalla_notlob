@@ -63,7 +63,7 @@ class OrderController extends Controller
             $myFriend->save();
             return  to_route('orders.index');
     }
-    
+
     public function show(Order $order): Response
     {
         //
