@@ -25,7 +25,7 @@ class OrderController extends Controller
         // dd($user);
         $friends =DB::table('friend_user')->where('user_id',auth()->id())->get();
         $friends_order =DB::table('friend_order')->where('user_id',auth()->id())->get();
-       
+
         return view('orders.index',compact('user','friends','friends_order'));
     }
 

@@ -44,20 +44,20 @@
                 </div>
                 @endif
                 <input type="hidden" name="user_id" value="{{auth()->id()}}">
-                <input type="submit" value="Add" name=""  class="col-4 m-auto btn btn-success">
+                <input type="submit" value="Add" name=""  class="col-4 m-auto btn butt">
 
 
 
             </form>
         </div>
     <h1 class="mt-5">Your Friends List</h1>
-    <div style="border:1px solid rgb(212, 207, 207);height:400px;width:800px; overflow:scroll" class="px-2">
+    <div style="border:1px solid rgb(212, 207, 207);" class="p-2 row">
+
         @foreach ($user->friends as $friend)
-        <span class="mx-5">
-        <img class="mb-5" src="{{asset("$friend->image")}}" alt="friend"
-        style="width:70px; height:70px">
-        <span class="col-4 mx-1">{{$friend->name}}</span>
-        </span>
+       <div class="row col-3">
+        <img class="mb-5 col-6 frinimg" src="{{asset("$friend->image")}}" alt="friend">
+        <p class="col-4  col-6 pt-3">{{$friend->name}}</p>
+       </div>
        @endforeach
     </div>
 
