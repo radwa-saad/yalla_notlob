@@ -67,7 +67,7 @@
         </div>
     </div>
 
-        <div class="col-7 border cool">
+        <div class="col-7 cool">
             <div class="row my-3 justify-content-around">
                 <p class="col-3 h5">Friend Name</p>
                 <form action="{{route('groups.store1')}}" method="POST" class="col-9 row justify-content-btween">
@@ -83,7 +83,7 @@
                 </form>
             </div>
 
-            <div class="my-3 justify-content-around p-2 row">
+            <div class="my-3 justify-content-around p-2 row ">
                 @foreach ($group_friends as $friend)
 
                 <div class="row col-3">

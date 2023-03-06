@@ -48,7 +48,7 @@
             </form>
         </div>
     <h1 class="mt-5">Your Friends List</h1>
-    <div style="border:1px solid rgb(212, 207, 207);" class="p-2 row">
+    <div class="p-3 row freindlist">
         
         @foreach ($user->friends as $friend)
        <div class="row col-3">
