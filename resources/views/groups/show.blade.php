@@ -9,7 +9,7 @@
             @csrf
             <div class="col-7">
                 <input type="text" name="name" id="" class="col-6 form-control my-2">
-           
+
             </div>
             @if($errors->has('name'))
             <div class="alert alert-danger">
@@ -19,7 +19,7 @@
             </div>
             @endif
             <div class="col-5 pt-2">
-                
+
             <input type="submit" value="Add" name=""  class=" btn btn-success text-item-center">
             </div>
         </form>
