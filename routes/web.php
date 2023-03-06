@@ -25,6 +25,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+route::get('invitation', [OrderController::class,"invitation"]);
 
 Route::post('/groups/store1', [GroupsController::class, 'store1'])->name('groups.store1');
 route::get('group-friends/{id}', [GroupsController::class,"show"])->name('group.show');

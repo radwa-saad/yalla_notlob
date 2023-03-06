@@ -51,13 +51,7 @@
                     <li>{{$errors->first('friend_id')}}</li>
                     </ul>
                     </div>
-                    @if ($errors->has('friends'))
-                        <div class="alert alert-danger">
-                            <ul>
-                                <li>{{ $errors->first('friends') }}</li>
-                            </ul>
-                        </div>
-                    @endif
+                @endif
                 <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Menu Image</label>
                 <input type="file" name="menu_image" class="form-control" id="exampleInputPassword1">
@@ -79,7 +73,6 @@
                 <p>{{$friend_order->friend_id}}</p>
                 @endforeach
             </div>
-
             </div>
         </div>
 
