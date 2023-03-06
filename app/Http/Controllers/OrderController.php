@@ -66,7 +66,7 @@ class OrderController extends Controller
             $myFriend->friend_id=$request->friend_id;
             // dd($myFriend->friends);
             $myFriend->save();
-            return  to_route('orders.index');
+            return  to_route('orders.create');
     }
 
     public function show(Order $order)
@@ -80,9 +80,13 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order): Response
+    public function edit(Order $order)
     {
         //
+        $order->status = 'finished';
+        $order->save();
+        $orders = Order::where('user_id',auth()->id())->get();
+        return redirect()->back()->with('message', 'Your Order has been updated successfully!');
     }
 
     /**
@@ -96,8 +100,12 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order): RedirectResponse
+    public function destroy(Order $order)
     {
         //
+        $order->status = 'cancel';
+        $order->save();
+        $order->delete();
+        return redirect()->back()->with('message','Your Order has been Cancelled successfully!');
     }
 }
