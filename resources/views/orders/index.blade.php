@@ -74,7 +74,7 @@
                 <p>{{$friend_order->friend_id}}</p>
                 @endforeach
             </div>
-       
+
             </div>
         </div>
 
