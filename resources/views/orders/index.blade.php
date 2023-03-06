@@ -41,7 +41,7 @@
                 <label for="exampleInputPassword1" class="form-label">Friends</label>
                 <select name="friend_id"  class="form-select" aria-label="Default select example">
                     @foreach($friends as $friend)
-                    <option value="{{$friend->id}}">{{$friend->email}}</option>
+                    <option value="{{$friend->id}}">{{$friend->name}}</option>
                     @endforeach
                 </select>
                 </div>
