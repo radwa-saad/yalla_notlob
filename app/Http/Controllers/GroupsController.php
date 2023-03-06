@@ -58,7 +58,7 @@ class GroupsController extends Controller
         // $group_friend->friend_id=$request->friend_id;
         // $group_friend->save();
 
-        return to_route('groups.index' );
+       return redirect('groups')->with('message','Group added successfully');
     }
 
     public function destroy(Group $group)

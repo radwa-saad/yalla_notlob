@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="mt-5 frind m-auto">
+    @if(session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+    @endif
     <h1>Friends</h1>
 
         <div class="form-group mb-2">

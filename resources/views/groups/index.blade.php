@@ -2,13 +2,16 @@
 
 @section('content')
 <div class="container">
+    @if(session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+    @endif
     <p class="h1">Groups</p>
     <div class="row pt-5 justify-content-center">
         <p class="col-1">Groups</p>
         <form action="{{route('groups.store')}}" method="POST" class="col-8 justify-content-btween">
             @csrf
-            
-            <input type="text" name="name" id="" class="col-7 form-control my-2 w-50">
+
+         <input type="text" name="name" class="col-7 form-control my-2 w-50">
             @if($errors->has('name'))
             <div class="alert alert-danger">
                 <ul>
