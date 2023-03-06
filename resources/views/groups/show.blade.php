@@ -79,7 +79,6 @@
                     </select>
                     <input type="hidden" name="group_id" id='group_id' class="col-1">
                     <input type="submit" value="Add" name="" data-bs-dismiss="modal" class="col-2 btn btn-success text-item-center">
-
                 </form>
             </div>
 
