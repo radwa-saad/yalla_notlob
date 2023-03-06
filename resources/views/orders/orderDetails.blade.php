@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <section class='container'>
+    @if(session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+    @endif
+    {{dd($order_details)}}
         <h4>Order Details</h4>
         <div class='row shadow' >
             <div class='col-md-8'>
@@ -12,7 +16,7 @@
                         <th>Price</th>
                         <th>Comment</th>
                     </tr>
-                    {{-- @foreach($orderDetails as $order)
+                    @foreach($order_details as $order)
                     <tr>
                         <td>{{Auth::user()->name}}</td>
                         <td>{{$order->item}}</td>
@@ -20,7 +24,7 @@
                         <td>{{$order->price}}</td>
                         <td>{{$order->comment}}</td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                 </table>
             </div>
             <div class='col-4'>
@@ -48,13 +52,14 @@
         <div class='row' style='margin-top: 150px;'>
             <form class="row g-3" method='POST' action='{{route("orderdetails.store")}}'>
                 @csrf
+                <input type="hidden" name="order_id" value="{{$order->id}}">
                 <div class="col-md-2">
                     <label for="item" class="form-label">Item</label>
                     <input type="text" class="form-control" id="item" name='item'>
                 </div>
                 <div class="col-md-2">
                     <label for="amount" class="form-label">Amount</label>
-                    <input type='number' class='form-control' id='amount' name='amount' min="1" max="5"/>
+                    <input type='number' class='form-control' id='amount' name='quantity' min="1" max="5"/>
                 </div>
                 <div class="col-md-2">
                     <label for="price" class="form-label">Price</label>

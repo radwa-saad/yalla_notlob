@@ -12,6 +12,8 @@ use App\Models\UserGroup;
 use App\Models\Freind;
 use App\Models\Freind_order;
 use App\Models\Order;
+use App\Models\Order_details;
+
 
 class User extends Authenticatable
 {
@@ -73,6 +75,11 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function order_details()
+    {
+        return $this->hasMany(Order_details::class);
     }
 
 
