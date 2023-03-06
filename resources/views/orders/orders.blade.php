@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container">
     <div class="row">
         <span class="col-6 h1"> Orders</span>
-        <a class="col-6" href="">Start new order</a>
+        <a class="col-6 btn btn-primary" href="{{route('orders.index)}}">Start new order</a>
     </div>
 
     <table class="table">
@@ -16,6 +17,7 @@
                 <th>Actions</th>
             </thead>
             <tbody>
+                @foreach()
                 <tr>
                     <td>111</td>
                     <td>222</td>
@@ -24,6 +26,7 @@
                     <td>555</td>
                     <td>666</td>
                 </tr>
+                @endforeach
             </tbody>
     </table>
 
@@ -31,3 +34,4 @@
 
 
 @endsection
+
