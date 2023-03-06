@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
-<div class="mt-2 frind m-auto">
+<div class="mt-5 frind m-auto">
+    @if(session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+    @endif
     <h1>Friends</h1>
 
         <div class="form-group mb-2">
@@ -49,7 +52,7 @@
         </div>
     <h1 class="mt-5">Your Friends List</h1>
     <div style="border:1px solid rgb(212, 207, 207);" class="p-2 row">
-        
+
         @foreach ($user->friends as $friend)
        <div class="row col-3">
         <img class="mb-5 col-6 frinimg" src="{{asset("$friend->image")}}" alt="friend">

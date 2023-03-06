@@ -46,7 +46,8 @@ class FreindsController extends Controller
     //  return "added";
         // $freind=Freind::create($request->all());
         // // DB::table('friend_user')->insert(['user_id' => auth()->id(),'email' => $freind->email]);
-        return to_route('friends.index');
+        // return to_route('friends.index');
+        return redirect('friends')->with('message','Friend Added successfully');
     }
         /**
      * Display a listing of the resource.

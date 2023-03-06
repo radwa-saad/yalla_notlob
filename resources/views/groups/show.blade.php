@@ -35,7 +35,7 @@
                     <form  action="{{route('groups.destroy', $group->id)}}" method="POST" class="col-3 py-2">
                         @csrf
                         @method('delete')
-                        <input  type='submit' class="btn btn-danger" value="delete">
+                        <input  type='submit' class="btn btn-danger" value="delete" onclick="return confirm('Are you sure you want to delete this group? ') ">
                     </form>
                 @endforeach
             </div>
@@ -79,7 +79,6 @@
                     </select>
                     <input type="hidden" name="group_id" id='group_id' class="col-1">
                     <input type="submit" value="Add" name="" data-bs-dismiss="modal" class="col-2 btn btn-success text-item-center">
-
                 </form>
             </div>
 
