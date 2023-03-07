@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Order_details;
 
 class OrderController extends Controller
 {
@@ -72,7 +73,9 @@ class OrderController extends Controller
     {
         //
         if($order){
-            return view('orders.orderDetails',$data=['order'=>$order]);
+            $order_details = Order_details::where('order_id',$order->id)->get();
+            // dd( $order_details);
+            return view('orders.orderDetails',$data=['order_details'=>$order_details , 'order'=>$order]);
         }
     }
 
