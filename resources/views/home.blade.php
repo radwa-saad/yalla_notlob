@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center home">
         <div class="col-md-5 text-center m-5 p-3 latestOrder">
             <div class="card">
                 <div class="card-header navo">

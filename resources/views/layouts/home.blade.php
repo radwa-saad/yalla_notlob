@@ -86,7 +86,7 @@
 
         <main>
             <div class="all">
-            @yield('content')
+                @yield('content')
             </div>
         </main>
     </div>
