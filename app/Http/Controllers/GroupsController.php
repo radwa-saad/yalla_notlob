@@ -82,4 +82,9 @@ class GroupsController extends Controller
         // return "added";
         return to_route('groups.index' );
     }
+    public function destroy1(Group_Friend $group_friend){
+        $group_friend->delete();
+        return to_route("groups.index");
+
+    }
 }

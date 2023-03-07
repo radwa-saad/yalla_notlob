@@ -88,6 +88,11 @@
                 <div class="row col-3">
                     <img class="mb-5 col-6 frinimg" src="{{asset("$friend->image")}}" alt="friend">
                     <p class="col-4  col-6 pt-3">{{$friend->name}}</p>
+                    <form  action="{{route('groups.destroy1', $friend->id)}}" method="POST" class="col-3 py-2">
+                        @csrf
+                        @method('delete')
+                        <input  type='submit' class="btn btn-danger" value="unfriend" onclick="return confirm('Are you sure you want to delete this friend? ') ">
+                    </form>
                    </div>
                @endforeach
             </div>

@@ -49,6 +49,14 @@ class FreindsController extends Controller
         // return to_route('friends.index');
         return redirect('friends')->with('message','Friend Added successfully');
     }
+    public function destroy(Freind $friend)
+    {
+        //
+        // $id=$group->group_id;
+        // DB::table('groups')->delete($id);
+        $friend->delete();
+        return to_route("friends.index");
+    }
         /**
      * Display a listing of the resource.
      */

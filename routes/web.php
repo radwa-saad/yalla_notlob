@@ -29,6 +29,7 @@ Auth::routes();
 // route::get('invitation', [OrderController::class,"invitation"]);
 
 Route::post('/groups/store1', [GroupsController::class, 'store1'])->name('groups.store1');
+Route::delete('/groups/destroy1/{id}',[GroupsController::class, 'destroy1'])->name('groups.destroy1');
 route::get('group-friends/{id}', [GroupsController::class,"show"])->name('group.show');
 Route::resource('groups', GroupsController::class);
 
