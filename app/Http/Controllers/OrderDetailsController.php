@@ -26,9 +26,9 @@ class OrderDetailsController extends Controller
         $user = User::find(auth()->id());
         $orders = DB::table('orders')->where('user_id',auth()->id())->get();
         // $order_details=Order_details::all()->get();
-        $order_details=DB::table('order_details')->where('user_id',auth()->id())->get();
+        // $order_details=DB::table('order_details')->where('user_id',auth()->id())->get();
 
-        return view('orders/orderDetails' , compact('user' , 'orders','order_details'));
+        return view('orders/orderDetails' , compact('user' , 'orders'));
     }
 
     /**
@@ -55,10 +55,10 @@ class OrderDetailsController extends Controller
     $orderdetail->comment = $request->comment;
     $orderdetail->order_id = $request->order_id;
     $orderdetail->save();
-    // $orderDetails = Order_details::where('order_id', $request->order_id)->get();
+    $order_details = Order_details::where('order_id', $request->order_id)->get();
 
-    // return route('orderdetails.index');
-    return redirect()->back()->with('message', 'Your item has been added successfully!');
+
+    return redirect()->back()->with('message', 'Your item has been added successfully!',['order_details'=>$order_details]);
 
 }
 

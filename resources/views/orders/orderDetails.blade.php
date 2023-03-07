@@ -4,7 +4,7 @@
     @if(session('message'))
     <div class="alert alert-success">{{session('message')}}</div>
     @endif
-    {{dd($order_details)}}
+    {{-- {{dd($order_details)}} --}}
         <h4>Order Details</h4>
         <div class='row shadow' >
             <div class='col-md-8'>
@@ -16,15 +16,25 @@
                         <th>Price</th>
                         <th>Comment</th>
                     </tr>
-                    @foreach($order_details as $order)
+                    @forelse ($order_details as $item)
                     <tr>
-                        <td>{{Auth::user()->name}}</td>
-                        <td>{{$order->item}}</td>
-                        <td>{{$order->quantity}}</td>
-                        <td>{{$order->price}}</td>
-                        <td>{{$order->comment}}</td>
+
+                        <th scope="row">{{Auth::user()->name}}</th>
+                        <td>{{$item->item}}</td>
+                        <td>{{$item->price}} Le</td>
+                        <td>{{$item->comment}}</td>
+
                     </tr>
-                    @endforeach
+
+
+                    @empty
+
+                    <tr class="text-center">
+                        <th colspan="4" class="alert alert-danger">There is no Items In This Order</th>
+
+                     </tr>
+
+                    @endforelse
                 </table>
             </div>
             <div class='col-4'>
