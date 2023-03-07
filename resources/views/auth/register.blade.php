@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row ">
-        <div class="col-12 col-md-7 ">
+        <div class="col-12 col-md-8 " style="margin: auto !important ;">
             <div class="card detail">
                 <div class="card-header navo">{{ __('Register') }}</div>
 
@@ -71,9 +71,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-5 image">
-            <img src=" {{ asset('images/log.jpg')}}" class="eat" width="30%" height="100%">
         </div>
     </div>
 </div>
