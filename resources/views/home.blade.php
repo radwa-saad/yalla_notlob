@@ -8,7 +8,7 @@
                 <div class="card-header navo">
                     Latest Orders
                 </div>
-                <div class="card-body">
+                <div class="card-body carbody">
                   <p class="card-text">
                     @foreach($latest_orders as $latest_order)
 
