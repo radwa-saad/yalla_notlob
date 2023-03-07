@@ -26,7 +26,7 @@
     </div>
 
     <div class="row py-5 justify-content-center">
-        <div class="col-4  py-3 mx-4 ">
+        <div class="col-3  py-3 mx-4 ">
             <div class="row ">
                 @foreach ($user->groups as $group)
                     <p class="col-3 py-2">{{$group->name}}</p>
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-        <div class="col-7 cool">
+        <div class="col-8 cool">
             <div class="row my-3 justify-content-around">
                 <p class="col-3 h5">Friend Name</p>
                 <form action="{{route('groups.store1')}}" method="POST" class="col-9 row justify-content-btween">

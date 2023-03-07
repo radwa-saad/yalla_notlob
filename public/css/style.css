@@ -4,7 +4,7 @@ body{
    color: white !important
 }
 .all{
-    height:100vh !important;
+    height:100% !important;
     background-color: rgba(0,0,0,0.6);
 }
 .navo{
@@ -26,6 +26,9 @@ body{
     color: black !important;
     border-radius: 20px !important;
     width:40% !important ;
+}
+.home{
+    padding-top:3.5rem !important ;
 }
 .textbody{
     color: black;
