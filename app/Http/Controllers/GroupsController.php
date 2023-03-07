@@ -82,9 +82,16 @@ class GroupsController extends Controller
         // return "added";
         return to_route('groups.index' );
     }
-    public function destroy1(Group_Friend $group_friend){
-        $group_friend->delete();
-        return to_route("groups.index");
+    public function delete(Request $request){
+
+        $friend = Group_friend::where('group_id','=',$request->group_id )
+        ->where('friend_id','=',$request->friend_id )
+        ->first();
+       $friend->delete();
+
+
+// return redirect()->back()->with('message', ' Friend has been Delete from Groub successfully!');
+      return to_route('groups.index');
 
     }
 }
