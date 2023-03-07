@@ -21,6 +21,7 @@
 
                         <th scope="row">{{Auth::user()->name}}</th>
                         <td>{{$item->item}}</td>
+                        <td>{{$item->quantity}}</td>
                         <td>{{$item->price}} Le</td>
                         <td>{{$item->comment}}</td>
 
