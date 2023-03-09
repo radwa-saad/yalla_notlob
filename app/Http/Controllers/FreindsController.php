@@ -69,12 +69,13 @@ class FreindsController extends Controller
 
         if($new_friend->save())
         {
-            // Notifaction::create([
+            // $notify=Notifaction::create([
             //     'sender_id' => auth()->id(),
             //     'receiver_id' => User::where('email',$request->email)->first()->id,
             //     'status' => false,
 
             // ]);
+// dd($notify);
             return to_route('friends.index')->with('message', 'friend is added successfully');
         }else{
             return to_route('friends.index')->with('error', 'error in saving friend');

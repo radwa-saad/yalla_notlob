@@ -13,14 +13,14 @@
                     @foreach($latest_orders as $latest_order)
 
                     <p> {{$latest_order->order_for}} on {{$latest_order->created_at}}</p>
-     
-     
+
+
                      @endforeach
                   </p>
                 </div>
               </div>
         </div>
-        
+
         <div class="col-md-5 text-center m-5 p-3  frindActivity">
             <div class="card">
                 <div class="card-header navo">
@@ -37,9 +37,9 @@
                   </p>
                 </div>
               </div>
-            
+
         </div>
     </div>
-    
+
 </div>
 @endsection

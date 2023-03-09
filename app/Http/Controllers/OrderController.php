@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Friend_order;
+use App\Models\Order_details;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\StoreFreind_orderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -12,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\Subscriber;
+use App\Mail\OrderMail;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
@@ -75,7 +76,7 @@ class OrderController extends Controller
             foreach ($request->friend_id as  $id) {
                 # code...
                 $email=DB::table("friend_user")->where('id',$id)->first();
-                Mail::to($email->email)->send(new Subscriber($email->email));
+                Mail::to($email->email)->send(new OrderMail($email->email));
             }
 
             return  to_route('orders.create');

@@ -29,27 +29,38 @@ class Subscriber extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Subscriber',
+            subject: 'Friend Mail',
         );
     }
 
     /**
      * Get the message content definition.
      */
-    public function build()
-    {
-        // return $this->from('theemail@gmail.com', 'Me')
-        //     ->to($email, $name)
-        //     ->view('emails.subscribers')
-        //     ->with([
-        //         'email' => $this->email
-        //     ]);
-        
-        return $this
-            ->subject('Thank you for subscribing to, Yalla NotLob!')
-            ->markdown('emails.subscribers');
 
+    public function content(): Content
+    {
+        return new Content(
+            markdown: 'emails.subscribers',
+        with: [
+            'url' => 'http://127.0.0.1:8000/friends',
+        ],
+
+        );
     }
+    // public function build()
+    // {
+    //     // return $this->from('theemail@gmail.com', 'Me')
+    //     //     ->to($email, $name)
+    //     //     ->view('emails.subscribers')
+    //     //     ->with([
+    //     //         'email' => $this->email
+    //     //     ]);
+
+    //     return $this
+    //         ->subject('Thank you for subscribing to, Yalla NotLob!')
+    //         ->markdown('emails.subscribers');
+
+    // }
 
     /**
      * Get the attachments for the message.

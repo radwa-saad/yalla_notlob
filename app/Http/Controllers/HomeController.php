@@ -28,6 +28,7 @@ class HomeController extends Controller
         // $users = User::find(auth()->id());
 
         $latest_orders = Order::where('user_id',auth()->id())->get();
+        
         return view('home',compact('latest_orders'));
     }
 }

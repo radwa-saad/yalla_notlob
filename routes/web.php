@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\OrderDetailsController;
 use App\Http\Controllers\AllOrdersController;
+use App\Http\Controllers\NotifactionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +34,7 @@ Route::post('/groups/store1', [GroupsController::class, 'store1'])->name('groups
 Route::delete('/groups/destroy1/{id}',[GroupsController::class, 'destroy1'])->name('groups.destroy1')->middleware('auth');
 route::get('group-friends/{id}', [GroupsController::class,"show"])->name('group.show')->middleware('auth');
 Route::resource('groups', GroupsController::class)->middleware('auth');
-
+Route::delete('deleteFrientoGroub', [GroupsController::class, 'delete'])->name('groups.delete');
 Route::resource('friends', FreindsController::class)->middleware('auth');;
 
 Route::resource('orders', OrderController::class)->middleware('auth');
@@ -41,7 +43,8 @@ Route::resource('allorders', AllOrdersController::class)->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
+Route::get('/notifications', [NotifactionController::class, 'getAll'])->name('notifys.all');
+Route::get('/notifyseen/{id}', [NotifactionController::class, 'changeSeen']);
 
 
 

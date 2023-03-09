@@ -1,13 +1,15 @@
 
 @component('mail::message')
-# Welcome to our dining table
+# Welcome to Yalla Notlob App
 
 Dear {{$email}},
 
-You have been invited to have a meal with us.
-Come on, Don't be shy.
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/orders'])
-Yalla !Lob 🍔
+Your friend adedd you to his friends on our app to have great time sharing food together.
+
+<br>
+Check invitation now
+@component('mail::button', ['url' => 'http://127.0.0.1:8000/friends'])
+Yalla !NotLob 🍔
 @endcomponent
 
 Thanks,<br>

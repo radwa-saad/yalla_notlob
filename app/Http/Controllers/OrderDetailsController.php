@@ -55,7 +55,7 @@ class OrderDetailsController extends Controller
     $orderdetail->comment = $request->comment;
     $orderdetail->order_id = $request->order_id;
     $orderdetail->save();
-    $order_details = Order_details::where('order_id', $request->order_id)->get();
+    $order_details = Order_details::where('order_id', $request->order_id)->get()::paginate(5);
 
     // dd($order_details);
     return redirect()->back()->with('message', 'Your item has been added successfully!',['order_details'=>$order_details]);

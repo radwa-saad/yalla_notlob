@@ -36,13 +36,17 @@ class GroupFriendMail extends Mailable
     /**
      * Get the message content definition.
      */
-    public function build()
+    public function content(): Content
     {
-        return $this
-            ->subject('Thank you for subscribing to, Yalla NotLob!')
-            ->markdown('emails.subscribers');
+        return new Content(
+            markdown: 'emails.groupMail',
+        with: [
+            'url' => 'http://127.0.0.1:8000/groups',
+        ],
 
+        );
     }
+
 
     /**
      * Get the attachments for the message.

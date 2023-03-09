@@ -13,6 +13,7 @@ use App\Models\Freind;
 use App\Models\Freind_order;
 use App\Models\Order;
 use App\Models\Order_details;
+use App\Models\Notifaction;
 
 
 class User extends Authenticatable
@@ -82,6 +83,10 @@ class User extends Authenticatable
         return $this->hasMany(Order_details::class);
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notifaction::class);
+    }
 
     // public function user_groups(){
     //     return $this->belongsToMany(UserGroup::class);

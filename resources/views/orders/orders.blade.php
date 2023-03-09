@@ -19,7 +19,7 @@
                 <th>Status</th>
                 <th colspan="3" class="text-center">Actions</th>
             </thead>
-            <tbody style="color: white; font-wight:bold;"> 
+            <tbody style="color: white; font-wight:bold;">
                 @foreach($user->orders as $order)
                 <tr>
                     <td style="color: #f71414 ;" class="h5">{{$order->order_for}}</td>

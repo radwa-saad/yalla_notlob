@@ -11,7 +11,7 @@ use App\Http\Requests\StoreGroupsRequest;
 use App\Http\Requests\StoreGroupFriendRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\Subscriber;
+use App\Mail\GroupFriendMail;
 use Illuminate\Support\Facades\Mail;
 class GroupsController extends Controller
 {
@@ -90,7 +90,7 @@ class GroupsController extends Controller
         // ->queue(new Subscriber($request->email));
         // dd($email);
         $email=DB::table("friend_user")->where('id',$request->friends)->first();
-        Mail::to($email->email)->send(new Subscriber($email->email));
+        Mail::to($email->email)->send(new GroupFriendMail($email->email));
 
         return to_route('groups.index' );
     }

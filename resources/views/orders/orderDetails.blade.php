@@ -43,7 +43,7 @@
                 <a style="text-decoration: none;" type="button" class='text-decoration-underline btn navo my-1' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     2 Friends invited click to view
                 </a>
-                
+
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
