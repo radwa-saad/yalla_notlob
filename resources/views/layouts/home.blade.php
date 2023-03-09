@@ -18,12 +18,10 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href=" {{ asset('css/home.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
-       
+
     </style>
 </head>
 <body>
@@ -58,7 +56,7 @@
                                 </li>
                             @endif
                         @else
-                            <li> 
+                            <li>
                                 <a style="color: white !important;" class="nav-link mx-5" href="{{route('home')}}">Home</a>
                             </li>
                             <li class="nav-item dropdown ">
@@ -88,6 +86,7 @@
             @yield('content')
         </main>
     </div>
+
 
 </body>
 </html>

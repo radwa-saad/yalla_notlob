@@ -10,6 +10,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Subscriber;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Notifaction;
 
 
 class FreindsController extends Controller
@@ -37,17 +40,50 @@ class FreindsController extends Controller
     //     return to_route('friends.index');
     $validatedData = $request->validated();
     $file = $request->file('image');
+    if ($file) {
     $ext = $file->getClientOriginalExtension();
     $filename = time().'.'.$ext;
     $file->move('uploads/friend/',$filename);
-    $validatedData['image']="uploads/friend/$filename";
-    Freind::create(['user_id' => auth()->id(),'email' => $validatedData['email'],'name' => $validatedData['name'],
-    'image' => $validatedData['image']]);
+        # code...
+        $validatedData['image']="uploads/friend/$filename";
+        Freind::create(['user_id' => auth()->id(),'email' => $validatedData['email'],'name' => $validatedData['name'],
+        'image' => $validatedData['image']]);
+    }else{
+        return \Redirect::back()->with("noImg","You Must Enter A Profile Picuure");
+    }
     //  return "added";
         // $freind=Freind::create($request->all());
         // // DB::table('friend_user')->insert(['user_id' => auth()->id(),'email' => $freind->email]);
         // return to_route('friends.index');
-        return redirect('friends')->with('message','Friend Added successfully');
+        $email = $request->all()['email'];
+
+        if(!User::where('email',$email)->first()){
+            Mail::to($email)->send(new Subscriber($email));
+            return to_route('friends.index')->with('message', 'this email is not found in system, we have sent an invitation to him !');
+        }
+
+        $new_friend = new Freind();
+        $new_friend->name = $request->name;
+        $new_friend->email = $request->email;
+        $new_friend->user_id = auth()->id();
+
+        if($new_friend->save())
+        {
+            // Notifaction::create([
+            //     'sender_id' => auth()->id(),
+            //     'receiver_id' => User::where('email',$request->email)->first()->id,
+            //     'status' => false,
+
+            // ]);
+            return to_route('friends.index')->with('message', 'friend is added successfully');
+        }else{
+            return to_route('friends.index')->with('error', 'error in saving friend');
+        }
+
+
+        // Mail::to($request->email)->send(new Subscriber($request->email));
+
+        // return redirect('friends')->with('message','Friend Added successfully');
     }
     public function destroy(Freind $friend)
     {

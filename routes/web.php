@@ -28,16 +28,16 @@ Route::get('/', function () {
 Auth::routes();
 // route::get('invitation', [OrderController::class,"invitation"]);
 
-Route::post('/groups/store1', [GroupsController::class, 'store1'])->name('groups.store1');
-Route::delete('/groups/destroy1/{id}',[GroupsController::class, 'destroy1'])->name('groups.destroy1');
-route::get('group-friends/{id}', [GroupsController::class,"show"])->name('group.show');
-Route::resource('groups', GroupsController::class);
+Route::post('/groups/store1', [GroupsController::class, 'store1'])->name('groups.store1')->middleware('auth');
+Route::delete('/groups/destroy1/{id}',[GroupsController::class, 'destroy1'])->name('groups.destroy1')->middleware('auth');
+route::get('group-friends/{id}', [GroupsController::class,"show"])->name('group.show')->middleware('auth');
+Route::resource('groups', GroupsController::class)->middleware('auth');
 
-Route::resource('friends', FreindsController::class);
+Route::resource('friends', FreindsController::class)->middleware('auth');;
 
-Route::resource('orders', OrderController::class);
+Route::resource('orders', OrderController::class)->middleware('auth');
 Route::resource('orderdetails', OrderDetailsController::class)->middleware('auth');
-Route::resource('allorders', AllOrdersController::class);
+Route::resource('allorders', AllOrdersController::class)->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

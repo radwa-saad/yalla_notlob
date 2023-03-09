@@ -11,6 +11,8 @@ use App\Http\Requests\StoreGroupsRequest;
 use App\Http\Requests\StoreGroupFriendRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Subscriber;
+use Illuminate\Support\Facades\Mail;
 class GroupsController extends Controller
 {
     public function index(){
@@ -71,19 +73,29 @@ class GroupsController extends Controller
     }
 
     public function store1(StoreGroupFriendRequest $request){
-
+        // dump($request->all());
         $group_friend=new Group_Friend();
         $group_friend->user_id = auth()->id();
         $group_friend->group_id = $request->group_id;
         $group_friend->friend_id = $request->friends;
         $group_friend->save();
+        // User::where('id',$request->friends)->get('email');
         //DB::table('group_friend')->insert(['user_id' => auth()->id(),'group_id'=> $group_friend->id]);
 
         // return "added";
+
+        // Mail::to($request->user())
+        // ->cc($moreUsers)
+        // ->bcc($evenMoreUsers)
+        // ->queue(new Subscriber($request->email));
+        // dd($email);
+        $email=DB::table("friend_user")->where('id',$request->friends)->first();
+        Mail::to($email->email)->send(new Subscriber($email->email));
+
         return to_route('groups.index' );
     }
-    public function destroy1(Group_Friend $group_friend){
-        $group_friend->delete();
+    public function destroy1(Group_Friend $group_friends){
+        $group_friends->delete();
         return to_route("groups.index");
 
     }

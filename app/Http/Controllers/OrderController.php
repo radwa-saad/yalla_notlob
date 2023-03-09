@@ -12,6 +12,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\Subscriber;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -48,13 +50,14 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         //
-
+// dd($request->friend_id);
         $request->validate([
             'order_for'=>'required',
             'restaurant_name'=>'required',
             'menu_image'=>'required|image|mimes:png,jpg'
         ]);
 
+        // dd($request->friend_id);
 
             $logged_in_user =Auth::user()->id;
             $data = $request->all();
@@ -63,9 +66,19 @@ class OrderController extends Controller
             $order =Order::create($data);
             $myFriend =new Friend_order();
             $myFriend->order_id=$order->id;
-            $myFriend->friend_id=$request->friend_id;
+            foreach ($request->friend_id as  $id) {
+                $myFriend->friend_id=$id;
+            }
+
             // dd($myFriend->friends);
+            // dd($email);
             $myFriend->save();
+            foreach ($request->friend_id as  $id) {
+                # code...
+                $email=DB::table("friend_user")->where('id',$id)->first();
+                Mail::to($email->email)->send(new Subscriber($email->email));
+            }
+
             return  to_route('orders.create');
     }
 

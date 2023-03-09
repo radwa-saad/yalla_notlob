@@ -45,9 +45,11 @@
                 @endif
                 <input type="hidden" name="user_id" value="{{auth()->id()}}">
                 <input type="submit" value="Add" name=""  class="col-4 m-auto btn butt">
-
-
-
+@if(\Session::has("noImg"))
+                <div class="alert alert-danger">
+                      {{ \Session::get('noImg') }}
+                    </div>
+                    @endif
             </form>
         </div>
     <h1 class="mt-5">Your Friends List</h1>
