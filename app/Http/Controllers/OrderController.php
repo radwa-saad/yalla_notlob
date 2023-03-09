@@ -28,7 +28,6 @@ class OrderController extends Controller
         $friends =DB::table('friend_user')->where('user_id',auth()->id())->get();
         $friends_order =DB::table('friend_order')->where('user_id',auth()->id())->get();
         $orders=Order::all();
-
         return view('orders.index',compact('user','friends','friends_order','orders'));
     }
 
@@ -86,7 +85,9 @@ class OrderController extends Controller
     {
         //
         if($order){
-            return view('orders.orderDetails',$data=['order'=>$order]);
+            $order_details = Order_details::where('order_id',$order->id)->get();
+            // dd( $order_details);
+            return view('orders.orderDetails',$data=['order_details'=>$order_details , 'order'=>$order]);
         }
     }
 

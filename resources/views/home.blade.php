@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center home">
         <div class="col-md-5 text-center m-5 p-3 latestOrder">
             <div class="card">
                 <div class="card-header navo">
                     Latest Orders
                 </div>
-                <div class="card-body">
+                <div class="card-body carbody">
                   <p class="card-text">
                     @foreach($latest_orders as $latest_order)
 

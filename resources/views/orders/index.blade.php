@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container row">
-        <div class="col-6">
-            <div class="mt-5 w-50 m-auto">
+            <div class="mt-5  m-auto col-12 col-md-4">
                 <h1>Add Order</h1>
 
                 <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">

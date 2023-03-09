@@ -26,7 +26,7 @@
     </div>
 
     <div class="row py-5 justify-content-center">
-        <div class="col-4  py-3 mx-4 ">
+        <div class="col-3  py-3 mx-4 ">
             <div class="row ">
                 @foreach ($user->groups as $group)
                     <p class="col-3 py-2">{{$group->name}}</p>
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-        <div class="col-7 cool">
+        <div class="col-8 cool">
             <div class="row my-3 justify-content-around">
                 <p class="col-3 h5">Friend Name</p>
                 <form action="{{route('groups.store1')}}" method="POST" class="col-9 row justify-content-btween">
@@ -85,13 +85,19 @@
             <div class="my-3 justify-content-around p-2 row ">
                 @foreach ($group_friends as $friend)
 
-                <div class="row col-3">
+                <div class="row col-4">
                     <img class="mb-5 col-6 frinimg" src="{{asset("$friend->image")}}" alt="friend">
-                    <p class="col-4  col-6 pt-3">{{$friend->name}}</p>
-                    <form  action="{{route('groups.destroy1', $friend->id)}}" method="POST" class="col-3 py-2">
+                    <p class="col-3 pt-3">{{$friend->name}}</p>
+                    <form action="{{ route('groups.delete') }}" method="post" class="col-3 py-2">
                         @csrf
                         @method('delete')
+                        <input type="hidden" name="group_id" value="{{ $group->id }}">
+                        <input type="hidden" name="friend_id" value="{{ $friend->id }}">
                         <input  type='submit' class="btn btn-danger" value="unfriend" onclick="return confirm('Are you sure you want to delete this friend? ') ">
+
+
+                        </button>
+
                     </form>
                    </div>
                @endforeach

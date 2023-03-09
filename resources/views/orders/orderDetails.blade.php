@@ -21,6 +21,7 @@
 
                         <th scope="row">{{Auth::user()->name}}</th>
                         <td>{{$item->item}}</td>
+                        <td>{{$item->quantity}}</td>
                         <td>{{$item->price}} Le</td>
                         <td>{{$item->comment}}</td>
 
@@ -37,14 +38,12 @@
                     @endforelse
                 </table>
             </div>
-            <div class='col-4'>
+            <div class='col-4 pt-5'>
                 <!-- Button trigger modal -->
-                <a type="button" class='text-decoration-underline' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <a style="text-decoration: none;" type="button" class='text-decoration-underline btn navo my-1' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     2 Friends invited click to view
                 </a>
-                <a type="button" class='text-decoration-underline' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    2 Friends joined click to view
-                </a>
+                
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
