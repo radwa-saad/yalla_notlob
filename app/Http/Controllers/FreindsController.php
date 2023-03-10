@@ -62,29 +62,8 @@ class FreindsController extends Controller
             return to_route('friends.index')->with('message', 'this email is not found in system, we have sent an invitation to him !');
         }
 
-        $new_friend = new Freind();
-        $new_friend->name = $request->name;
-        $new_friend->email = $request->email;
-        $new_friend->user_id = auth()->id();
 
-        if($new_friend->save())
-        {
-            // $notify=Notifaction::create([
-            //     'sender_id' => auth()->id(),
-            //     'receiver_id' => User::where('email',$request->email)->first()->id,
-            //     'status' => false,
-
-            // ]);
-// dd($notify);
-            return to_route('friends.index')->with('message', 'friend is added successfully');
-        }else{
-            return to_route('friends.index')->with('error', 'error in saving friend');
-        }
-
-
-        // Mail::to($request->email)->send(new Subscriber($request->email));
-
-        // return redirect('friends')->with('message','Friend Added successfully');
+        return redirect('friends')->with('message','Friend Added successfully');
     }
     public function destroy(Freind $friend)
     {
