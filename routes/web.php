@@ -34,7 +34,7 @@ Route::post('/groups/store1', [GroupsController::class, 'store1'])->name('groups
 Route::delete('/groups/destroy1/{id}',[GroupsController::class, 'destroy1'])->name('groups.destroy1')->middleware('auth');
 route::get('group-friends/{id}', [GroupsController::class,"show"])->name('group.show')->middleware('auth');
 Route::resource('groups', GroupsController::class)->middleware('auth');
-Route::delete('deleteFrientoGroub', [GroupsController::class, 'delete'])->name('groups.delete');
+Route::delete('deleteFrientoGroub/{id}', [GroupsController::class, 'delete'])->name('groups.delete');
 Route::resource('friends', FreindsController::class)->middleware('auth');;
 
 Route::resource('orders', OrderController::class)->middleware('auth');

@@ -98,13 +98,13 @@ class GroupsController extends Controller
         $group_friends->delete();
         return to_route("groups.index");
     }
-    public function delete(Request $request){
+    public function delete($id){
 
-        $friend = Group_friend::where('group_id','=',$request->group_id )
-        ->where('friend_id','=',$request->friend_id )
+        $friend = Group_friend::where('friend_id','=',$id )
+        // ->where('friend_id','=',$request->friend_id )
         ->first();
-       $friend->delete();
-
+        $friend->delete();
+    
 
 // return redirect()->back()->with('message', ' Friend has been Delete from Groub successfully!');
       return redirect()->back();
