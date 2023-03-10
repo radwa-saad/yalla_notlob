@@ -8,8 +8,8 @@
         <h4>Order Details</h4>
         <div class='row shadow' >
             <div class='col-md-8'>
-                <table class=' table table-striped text-light table-dark'>
-                    <tr>
+                <table class=' table freindlist' style="color: white;">
+                    <tr class="navo">
                         <th>Person</th>
                         <th>Item</th>
                         <th>Amount</th>
@@ -19,7 +19,7 @@
                     @forelse ($order_details as $item)
                     <tr>
 
-                        <th scope="row">{{Auth::user()->name}}</th>
+                        <th style="color:#f71414; " scope="row">{{Auth::user()->name}}</th>
                         <td>{{$item->item}}</td>
                         <td>{{$item->quantity}}</td>
                         <td>{{$item->price}} Le</td>

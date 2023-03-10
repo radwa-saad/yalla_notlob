@@ -41,7 +41,7 @@
                 <a class="nav-link mx-5" href="{{route('home')}}">Home</a>
                 <a class="nav-link mx-5" href="{{route('friends.index')}}">Friends</a>
                 <a class="nav-link mx-5" href="{{route('groups.index')}}">Groups</a>
-                <a class="nav-link mx-5" href="{{route('orders.index')}}">Orders</a>
+                <a class="nav-link mx-5" href="{{route('orders.create')}}">Orders</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -56,7 +56,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto colo">
                          <!-- Notifications -->
-                    <div class="dropdown">
+                    <div class="dropdown mt-2">
                         <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#"
                             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" v-pre>
@@ -107,7 +107,7 @@
 
         <main >
             <div class="all py-5">
-            @yield('content')
+                @yield('content')
             </div>
         </main>
     </div>

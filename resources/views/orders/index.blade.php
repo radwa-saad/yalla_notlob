@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container row">
-            <div class="mt-5  m-auto col-12 col-md-4">
+            <div class="mt-3  m-auto w-50">
                 <h1>Add Order</h1>
 
                 <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
@@ -69,12 +69,7 @@
                 </form>
             </div>
 
-            <h1>Friends Invited</h1>
-            <div>
-                @foreach ($friends_order as $friend_order)
-                    <p>{{ $friend_order->friend_id }}</p>
-                @endforeach
-            </div>
+            
         </div>
     </div>
 
