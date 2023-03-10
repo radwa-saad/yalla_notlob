@@ -107,7 +107,7 @@
 
         <main >
             <div class="all py-5">
-            @yield('content')
+                @yield('content')
             </div>
         </main>
     </div>
