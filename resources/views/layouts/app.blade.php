@@ -41,7 +41,7 @@
                 <a class="nav-link mx-5" href="{{route('home')}}">Home</a>
                 <a class="nav-link mx-5" href="{{route('friends.index')}}">Friends</a>
                 <a class="nav-link mx-5" href="{{route('groups.index')}}">Groups</a>
-                <a class="nav-link mx-5" href="{{route('orders.index')}}">Orders</a>
+                <a class="nav-link mx-5" href="{{route('orders.create')}}">Orders</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
