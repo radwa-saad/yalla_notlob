@@ -107,7 +107,7 @@ class GroupsController extends Controller
 
 
 // return redirect()->back()->with('message', ' Friend has been Delete from Groub successfully!');
-      return to_route('groups.index');
+      return redirect()->back();
 
     }
 }
