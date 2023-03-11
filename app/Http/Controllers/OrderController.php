@@ -50,7 +50,7 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         //
-// dd($request->friend_id);
+// dd($request);
         $request->validate([
             'order_for'=>'required',
             'restaurant_name'=>'required',
@@ -64,20 +64,25 @@ class OrderController extends Controller
 
             $data['user_id']=$logged_in_user;
             $order =Order::create($data);
-            $myFriend =new Friend_order();
-            $myFriend->order_id=$order->id;
-            foreach ($request->friend_id as  $id) {
-                $myFriend->friend_id=$id;
+
+            $order->invites_count = count($request->invite_friends);
+            $order->save();
+            $friends_invites = [];
+            foreach( $request->invite_friends as $k => $v ) {
+                $data = collect([
+                    'friend_id' => $request['invite_friends'][$k],
+                    'order_id' => $order->id,
+
+                ]);
+                $friends_invites[] = $data->toArray();
+
             }
 
-            // dd($myFriend->friends);
-            // dd($email);
-            $myFriend->save();
-            foreach ($request->friend_id as  $id) {
+            Friend_order::insert( $friends_invites );
                 # code...
-                $email=DB::table("friend_user")->where('id',$id)->first();
+                $email=DB::table("friend_user")->where('id',$request->invite_friends)->first();
+            // dd($request);
                 Mail::to($email->email)->send(new OrderMail($email->email));
-            }
 
             return  to_route('orders.create');
     }
