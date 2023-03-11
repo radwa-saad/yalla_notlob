@@ -14,7 +14,14 @@ class Friend_order extends Model
     protected $fillable=['user_id','friend_id','order_id'];
     protected $table="friend_order";
 
+    // public function orders()
+    // {
+    //     return $this->belongsToMany(Order::class, 'friend_order');
+    // }
+    // public function friends()
+    // {
+    //     return $this->belongsToMany(Friend::class);
+    // }
 
-   
     }
 

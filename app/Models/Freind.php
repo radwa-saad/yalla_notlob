@@ -17,6 +17,6 @@ class Freind extends Model
     // }
     public function orders()
     {
-        return $this->belongsToMany(Order::class, 'friend_order');
+        return $this->belongsToMany(Order::class);
     }
 }

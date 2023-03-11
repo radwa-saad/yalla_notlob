@@ -41,14 +41,16 @@
                             <button  type="submit" class="btn btn-danger">Cancel</button>
                         </form>
                         @endif
+
                     </td>
 
                 </tr>
                 @endforeach
             </tbody>
+
     </table>
       <div class="d-flex">
-    {{-- {{$orders->links('pagination::bootstrap-5')}} --}}
+        {{$orders->links('pagination::bootstrap-5')}}
   </div>
 </div>
 

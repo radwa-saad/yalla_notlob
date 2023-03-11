@@ -39,7 +39,7 @@ class OrderController extends Controller
     {
         //
         $user = User::find(auth()->id());
-        $orders=Order::all();
+        $orders=Order::paginate(2);
 
         return view('orders.orders',compact('user','orders'));
     }

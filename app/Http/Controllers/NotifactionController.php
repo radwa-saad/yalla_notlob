@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Notifaction;
+use App\Models\User;
 
 class NotifactionController extends Controller
 {
