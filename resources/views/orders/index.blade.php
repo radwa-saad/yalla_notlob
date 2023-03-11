@@ -37,7 +37,7 @@
                     @endif
                     <div class=" offser-md-3  form-group">
         <h6 class="pt-2">Invite Friends</h6>
-        <select name="friend_id[]" multiple='multiple' id="tags" class="tags form-control">
+        <select name="invite_friends[]" multiple='multiple' id="tags" class="tags form-control">
             @foreach ($friends as $friend)
                 <option value="{{ $friend->id }}" style="color:red;">{{ $friend->name }}</option>
             @endforeach
@@ -69,7 +69,7 @@
                 </form>
             </div>
 
-            
+
         </div>
     </div>
 

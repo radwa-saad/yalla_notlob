@@ -24,7 +24,7 @@
                 <tr>
                     <td style="color: #f71414 ;" class="h5">{{$order->order_for}}</td>
                     <td>{{$order->restaurant_name}}</td>
-                    <td>{{$order->order_for}}</td>
+                    <td>{{$order->invites_count}}</td>
                     <td>{{$order->order_for}}</td>
                     <td>{{$order->status}}</td>
                     <td>

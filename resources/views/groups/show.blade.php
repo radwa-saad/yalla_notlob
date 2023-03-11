@@ -68,7 +68,7 @@
     </div>
 
         <div class="col-8 cool">
-            <div class="row my-3 justify-content-around">
+            <!-- <div class="row my-3 justify-content-around">
                 <p class="col-3 h5">Friend Name</p>
                 <form action="{{route('groups.store1')}}" method="POST" class="col-9 row justify-content-btween">
                     @csrf
@@ -80,7 +80,7 @@
                     <input type="hidden" name="group_id" id='group_id' class="col-1">
                     <input type="submit" value="Add" name="" data-bs-dismiss="modal" class="col-2 btn btn-success text-item-center">
                 </form>
-            </div>
+            </div> -->
 
             <div class="my-3 justify-content-around p-2 row ">
                 @foreach ($group_friends as $friend)

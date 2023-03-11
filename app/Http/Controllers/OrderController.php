@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Freind;
 use App\Models\Friend_order;
 use App\Models\Order_details;
 use App\Http\Requests\StoreOrderRequest;
@@ -50,7 +51,7 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         //
-// dd($request->friend_id);
+// dd($request);
         $request->validate([
             'order_for'=>'required',
             'restaurant_name'=>'required',
@@ -64,20 +65,25 @@ class OrderController extends Controller
 
             $data['user_id']=$logged_in_user;
             $order =Order::create($data);
-            $myFriend =new Friend_order();
-            $myFriend->order_id=$order->id;
-            foreach ($request->friend_id as  $id) {
-                $myFriend->friend_id=$id;
+
+            $order->invites_count = count($request->invite_friends);
+            $order->save();
+            $friends_invites = [];
+            foreach( $request->invite_friends as $k => $v ) {
+                $data = collect([
+                    'friend_id' => $request['invite_friends'][$k],
+                    'order_id' => $order->id,
+
+                ]);
+                $friends_invites[] = $data->toArray();
+
             }
 
-            // dd($myFriend->friends);
-            // dd($email);
-            $myFriend->save();
-            foreach ($request->friend_id as  $id) {
+            Friend_order::insert( $friends_invites );
                 # code...
-                $email=DB::table("friend_user")->where('id',$id)->first();
+                $email=DB::table("friend_user")->where('id',$request->invite_friends)->first();
+            // dd($request);
                 Mail::to($email->email)->send(new OrderMail($email->email));
-            }
 
             return  to_route('orders.create');
     }
@@ -85,12 +91,30 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+        // dd($order);
+        $count_invite = Friend_order::where('order_id',$order->id)->count();
+        // $friends_invites_orders = Friend_order::where('order_id',$order->id)->get();
+        // $friends_invites_orders=DB::table('friend_order')
+        // ->select('friend_user.name', 'friend_user.image')
+        // ->leftjoin('friend_user', 'friend_order.order_id', '=', 'friend_user.id')
+        // // ->join('orders', 'comments.order_id', '=', 'orders.id')
+        // ->where('friend_order.user_id', $order->id)
+        // ->get();
+
+        $friends_invites_orders = DB::table('friend_order')
+        ->join('orders', 'friend_order.order_id', '=', 'orders.id')
+        ->join('friend_user', 'friend_order.friend_id', '=', 'friend_user.id')
+        ->where('friend_order.order_id', $order->id)
+        ->select('friend_user.*')
+        ->get();
+        // dd($friends_invites_orders);
         if($order){
             $order_details = Order_details::where('order_id',$order->id)->get();
             // dd( $order_details);
-            return view('orders.orderDetails',$data=['order_details'=>$order_details , 'order'=>$order]);
+            return view('orders.orderDetails',$data=['order_details'=>$order_details , 'order'=>$order ,'count_invite'=>$count_invite,'friends_invites_orders'=>$friends_invites_orders]);
         }
     }
+
 
     /**
      * Show the form for editing the specified resource.
