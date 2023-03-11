@@ -104,7 +104,7 @@ class GroupsController extends Controller
         // ->where('friend_id','=',$request->friend_id )
         ->first();
         $friend->delete();
-    
+
 
 // return redirect()->back()->with('message', ' Friend has been Delete from Groub successfully!');
       return redirect()->back();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Freind;
 use App\Models\Friend_order;
 use App\Models\Order_details;
 use App\Http\Requests\StoreOrderRequest;
@@ -90,12 +91,30 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+        // dd($order);
+        $count_invite = Friend_order::where('order_id',$order->id)->count();
+        // $friends_invites_orders = Friend_order::where('order_id',$order->id)->get();
+        // $friends_invites_orders=DB::table('friend_order')
+        // ->select('friend_user.name', 'friend_user.image')
+        // ->leftjoin('friend_user', 'friend_order.order_id', '=', 'friend_user.id')
+        // // ->join('orders', 'comments.order_id', '=', 'orders.id')
+        // ->where('friend_order.user_id', $order->id)
+        // ->get();
+
+        $friends_invites_orders = DB::table('friend_order')
+        ->join('orders', 'friend_order.order_id', '=', 'orders.id')
+        ->join('friend_user', 'friend_order.friend_id', '=', 'friend_user.id')
+        ->where('friend_order.order_id', $order->id)
+        ->select('friend_user.*')
+        ->get();
+        // dd($friends_invites_orders);
         if($order){
             $order_details = Order_details::where('order_id',$order->id)->get();
             // dd( $order_details);
-            return view('orders.orderDetails',$data=['order_details'=>$order_details , 'order'=>$order]);
+            return view('orders.orderDetails',$data=['order_details'=>$order_details , 'order'=>$order ,'count_invite'=>$count_invite,'friends_invites_orders'=>$friends_invites_orders]);
         }
     }
+
 
     /**
      * Show the form for editing the specified resource.

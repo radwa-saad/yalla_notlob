@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class='container'>
+
     @if(session('message'))
     <div class="alert alert-success">{{session('message')}}</div>
     @endif
@@ -38,26 +39,36 @@
                     @endforelse
                 </table>
             </div>
-            <div class='col-4 pt-5'>
-                <!-- Button trigger modal -->
-                <a style="text-decoration: none;" type="button" class='text-decoration-underline btn navo my-1' data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    2 Friends invited click to view
-                </a>
 
+            <div class='col-4 pt-4'>
+                <!-- Button trigger modal -->
+                <button type="button" class='text-decoration-underline btn navo my-1' data-bs-toggle="modal" data-bs-target="#exampleModal">
+                {{$count_invite}} Friends invited click to view
+                </button>
                 <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-header navo">
+                            <h5 class="modal-title" id="exampleModalLabel">Invited Friends</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        @foreach($friends_invites_orders as $friend)
+                        <div class="row">
+                        <img class="mb-5 col-3 frinimg" src="{{asset("$friend->image")}}" alt="">
+                                <span class="col-8 text-dark pt-2">{{$friend->name}}</span>
                             </div>
-                            <div class="modal-body">
-                            </div>
+                            @endforeach
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                    </div>
+</div>
+
         <div class='row' style='margin-top: 150px;'>
             <form class="row g-3" method='POST' action='{{route("orderdetails.store")}}'>
                 @csrf
