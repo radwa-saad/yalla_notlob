@@ -25,6 +25,7 @@ class OrderDetailsController extends Controller
         //
         $user = User::find(auth()->id());
         $orders = DB::table('orders')->where('user_id',auth()->id())->get();
+        // dd($orders);
         // $order_details=Order_details::all()->get();
         //  $order_details=DB::table('order_details')->where('user_id',auth()->id())->get();
         // dd($order_details);
