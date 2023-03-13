@@ -29,13 +29,14 @@ class NotifactionController extends Controller
 
     public function getAll()
     {
-        $all = Notifaction::where('receiver_id',Auth::user()->id)->where('status',false)->with('sender')->get();
+        // return 111;
+        $all = Notifaction::where('receiver_id',auth()->user()->id)->where('status',false)->with('sender')->get();
         // dd($all);
         return $all;
     }
 
     public function changeSeen($id){
-        Notifaction::where('receiver_id',Auth::user()->id)->update(['status'=>true]);
+        Notifaction::where('receiver_id',auth()->user()->id)->update(['status'=>true]);
         return true;
     }
 }

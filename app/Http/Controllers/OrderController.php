@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Freind;
 use App\Models\Friend_order;
 use App\Models\Order_details;
+use App\Models\Notifaction;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\StoreFreind_orderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -76,14 +77,25 @@ class OrderController extends Controller
 
                 ]);
                 $friends_invites[] = $data->toArray();
+                $friend=DB::table("friend_user")->where('id',$request->invite_friends[$k])->first();
+                // dd($request);
 
+                    Mail::to($friend->email)->send(new OrderMail($friend->email));
+                    $user=User::where('email',$friend->email)->first();
+                    if($user){
+                    $notifiaction= new Notifaction();
+                    $notifiaction->sender_id=Auth::user()->id;
+                    $notifiaction->receiver_id=$user->id;
+                    $notifiaction->message=Auth::user()->name.' Invited You to her Order';
+                    $notifiaction->status=0;
+
+                    $notifiaction->save();
+                }
             }
 
             Friend_order::insert( $friends_invites );
+
                 # code...
-                $email=DB::table("friend_user")->where('id',$request->invite_friends)->first();
-            // dd($request);
-                Mail::to($email->email)->send(new OrderMail($email->email));
 
             return  to_route('orders.create');
     }
