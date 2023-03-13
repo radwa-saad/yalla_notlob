@@ -17,6 +17,7 @@
                 <th>Invited</th>
                 <th>Joined</th>
                 <th>Status</th>
+                <th>menu_image</th>
                 <th colspan="3" class="text-center">Actions</th>
             </thead>
             <tbody style="color: white; font-wight:bold;">
@@ -27,6 +28,7 @@
                     <td>{{$order->invites_count}}</td>
                     <td>{{$order->joined}}</td>
                     <td>{{$order->status}}</td>
+                    <td><img class="mb-5 col-5 frinimg" src="{{asset("$order->menu_image")}}" alt="menu_image"></td>
                     <td>
                         <a href="{{route('orders.show',$order->id)}}" class="btn btn-primary">View</a>
                     </td>
@@ -50,7 +52,7 @@
 
     </table>
       <div class="d-flex">
-        {{$orders->links('pagination::bootstrap-5')}}
+
   </div>
 </div>
 

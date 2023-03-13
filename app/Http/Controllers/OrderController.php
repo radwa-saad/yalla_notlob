@@ -73,6 +73,15 @@ class OrderController extends Controller
             $data = $request->all();
 
             $data['user_id']=$logged_in_user;
+
+                $file = $request->file('menu_image');
+                $ext = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $ext;
+                $file->move('uploads/order/', $filename);
+                $path = "uploads/order/$filename";
+
+                $data['menu_image'] = $path;
+
             $order =Order::create($data);
 
             $order->invites_count = count($request->invite_friends);
