@@ -5,6 +5,7 @@
     @if(session('message'))
     <div class="alert alert-success">{{session('message')}}</div>
     @endif
+    {{-- {{$image}} --}}
     {{-- {{dd($order_details)}} --}}
         <h4>Order Details</h4>
         <div class='row shadow' >
@@ -40,7 +41,7 @@
                 </table>
             </div>
 
-            <div class='col-4 pt-4'>
+            <div class='col-4 pt-1'>
                 <!-- Button trigger modal -->
                 <button type="button" class='text-decoration-underline btn navo my-1' data-bs-toggle="modal" data-bs-target="#exampleModal">
                 {{$count_invite}} Friends invited click to view
@@ -69,8 +70,8 @@
                     </div>
 </div>
 
-        <div class='row' style='margin-top: 150px;'>
-            <form class="row g-3" method='POST' action='{{route("orderdetails.store")}}'>
+        <div class='row mt-3'>
+            <form class="row g-3 " method='POST' action='{{route("orderdetails.store")}}'>
                 @csrf
                 <input type="hidden" name="order_id" value="{{$order->id}}">
                 <div class="col-md-2">
