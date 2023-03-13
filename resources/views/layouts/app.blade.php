@@ -61,7 +61,7 @@
                             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" v-pre>
                             <i class="fas fa-bell"></i>
-                            <span class="badge rounded-pill badge-notification bg-danger" id="nots_count"></span>
+                            <span class="badge rounded-pill badge-notification bg-warning " id="nots_count"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" id="nots"
                             aria-labelledby="navbarDropdownMenuLink">
@@ -126,14 +126,14 @@
         fetch('/notifications')
             .then(res => res.json())
             .then(res => {
-                // console.log(res);
+                console.log(res);
                 document.querySelector('#nots_count').textContent = res.length;
                 if (res.length == 0) {
                     document.querySelector('#nots_count').textContent = '';
                     ul.innerHTML = '<small>There is no any invitation</small>';
                 } else {
                     for (let i = 0; i < res.length; i++) {
-                        addListItem(res[i].sender.name)
+                        addListItem(res[i].sender.name,res[i].message)
                     }
                 }
             })
@@ -141,10 +141,10 @@
             fetch('/notifyseen/' + {{ auth()->id() }}).then(res => res.json()).then(res => document.querySelector(
                 '#nots_count').textContent = '')
         })
-        function addListItem(sender) {
+        function addListItem(sender,message) {
             let li = document.createElement('li');
             li.innerHTML =
-                `<a class="dropdown-item"><b class="text-danger">${sender}</b> has invited you to eat together</a>`;
+                `<a class="dropdown-item"><b class="text-danger"></b> ${message}</a>`;
             ul.appendChild(li);
         }
         // $(document).ready(function() {

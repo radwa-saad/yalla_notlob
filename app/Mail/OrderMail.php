@@ -18,11 +18,14 @@ class OrderMail extends Mailable
      * Create a new message instance.
      */
     public $email;
+    public $id;
     // protected Order $order
-    public function __construct($email)
+    public function __construct($email,$id)
     {
         //
         $this->email = $email;
+        $this->id = $id;
+
         // $this->menu_image =$order;
     }
 
@@ -44,7 +47,7 @@ class OrderMail extends Mailable
         return new Content(
             markdown: 'emails.orderMail',
         with: [
-            'url' => 'http://127.0.0.1:8000/orders',
+            'url' => 'http://127.0.0.1:8000/changeStatus/'.$this->id,
             // 'orderImg' => $this->order->menu_image,
         ],
 

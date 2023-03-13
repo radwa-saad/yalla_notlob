@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Freind;
 use App\Models\Friend_order;
 use App\Models\Order_details;
+use App\Models\Notifaction;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\StoreFreind_orderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -30,6 +31,8 @@ class OrderController extends Controller
         $friends =DB::table('friend_user')->where('user_id',auth()->id())->get();
         $friends_order =DB::table('friend_order')->where('user_id',auth()->id())->get();
         $orders=Order::all();
+
+        // dd($orders);
         return view('orders.index',compact('user','friends','friends_order','orders'));
     }
 
@@ -40,7 +43,13 @@ class OrderController extends Controller
     {
         //
         $user = User::find(auth()->id());
-        $orders=Order::paginate(2);
+        $orders=Order::where('user_id','=',auth()->id())->get();
+        foreach($orders as $order){
+            $joined_count=Friend_order::where('order_id','=',$order->id)->where('status','=','joined')->count();
+            $order->joined=$joined_count;
+
+        }
+        // dd($orders);
 
         return view('orders.orders',compact('user','orders'));
     }
@@ -76,14 +85,25 @@ class OrderController extends Controller
 
                 ]);
                 $friends_invites[] = $data->toArray();
+                $friend=DB::table("friend_user")->where('id',$request->invite_friends[$k])->first();
+                // dd($request);
 
+                    Mail::to($friend->email)->send(new OrderMail($friend->email,$order->id));
+                    $user=User::where('email',$friend->email)->first();
+                    if($user){
+                    $notifiaction= new Notifaction();
+                    $notifiaction->sender_id=Auth::user()->id;
+                    $notifiaction->receiver_id=$user->id;
+                    $notifiaction->message=Auth::user()->name.' Invited You to her Order';
+                    $notifiaction->status=0;
+
+                    $notifiaction->save();
+                }
             }
 
             Friend_order::insert( $friends_invites );
+
                 # code...
-                $email=DB::table("friend_user")->where('id',$request->invite_friends)->first();
-            // dd($request);
-                Mail::to($email->email)->send(new OrderMail($email->email));
 
             return  to_route('orders.create');
     }
@@ -91,15 +111,10 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
-        // dd($order);
+        $image = $order->menu_image;
+        // dd($image);
         $count_invite = Friend_order::where('order_id',$order->id)->count();
-        // $friends_invites_orders = Friend_order::where('order_id',$order->id)->get();
-        // $friends_invites_orders=DB::table('friend_order')
-        // ->select('friend_user.name', 'friend_user.image')
-        // ->leftjoin('friend_user', 'friend_order.order_id', '=', 'friend_user.id')
-        // // ->join('orders', 'comments.order_id', '=', 'orders.id')
-        // ->where('friend_order.user_id', $order->id)
-        // ->get();
+
 
         $friends_invites_orders = DB::table('friend_order')
         ->join('orders', 'friend_order.order_id', '=', 'orders.id')
@@ -111,7 +126,7 @@ class OrderController extends Controller
         if($order){
             $order_details = Order_details::where('order_id',$order->id)->get();
             // dd( $order_details);
-            return view('orders.orderDetails',$data=['order_details'=>$order_details , 'order'=>$order ,'count_invite'=>$count_invite,'friends_invites_orders'=>$friends_invites_orders]);
+            return view('orders.orderDetails',$data=['order_details'=>$order_details , 'order'=>$order ,'count_invite'=>$count_invite,'friends_invites_orders'=>$friends_invites_orders ,'image'=>$image]);
         }
     }
 
