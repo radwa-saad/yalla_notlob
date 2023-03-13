@@ -25,7 +25,7 @@ use App\Http\Controllers\NotifactionController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 // route::get('invitation', [OrderController::class,"invitation"]);
@@ -45,6 +45,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/notifications', [NotifactionController::class, 'getAll'])->name('notifys.all');
 Route::get('/notifyseen/{id}', [NotifactionController::class, 'changeSeen']);
+Route::get('/changeStatus/{id}', [FreindsController::class, 'changeStatus']);
 
 
 

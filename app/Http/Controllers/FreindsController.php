@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Freind;
 use App\Models\User;
+use App\Models\Friend_order;
 use App\Http\Requests\StoreFreindsRequest;
 use App\Http\Requests\UpdateFreindsRequest;
 use Illuminate\Http\RedirectResponse;
@@ -72,6 +73,12 @@ class FreindsController extends Controller
         // DB::table('groups')->delete($id);
         $friend->delete();
         return to_route("friends.index");
+    }
+
+    public function changeStatus($id)
+    {
+        Friend_order::where('id',$id)->update(['status'=>'joined']);
+        return to_route("welcome");
     }
         /**
      * Display a listing of the resource.
