@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Friend;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     /**
@@ -28,7 +30,7 @@ class HomeController extends Controller
         // $users = User::find(auth()->id());
 
         $latest_orders = Order::where('user_id',auth()->id())->get();
-        
+
         return view('home',compact('latest_orders'));
     }
 }
