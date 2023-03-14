@@ -57,13 +57,13 @@
                     <ul class="navbar-nav ms-auto colo">
                          <!-- Notifications -->
                     <div class="dropdown mt-2">
-                        <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#"
+                        <a class="text-reset me-3 dropdown-toggle hidden-arrow row" href="#"
                             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" v-pre>
-                            <i class="fas fa-bell"></i>
-                            <span class="badge rounded-pill badge-notification bg-warning " id="nots_count"></span>
+                            <i class="fas fa-bell col-5 pt-2 mx-0"></i>
+                            <span class="badge rounded-pill badge-notification bg-black col-4 mx-0" id="nots_count"></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" id="nots"
+                        <ul class="dropdown-menu dropdown-menu-end mt-2" id="nots"
                             aria-labelledby="navbarDropdownMenuLink">
 
                         </ul>

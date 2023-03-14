@@ -22,13 +22,13 @@
             </thead>
             <tbody style="color: white; font-wight:bold;">
                 @foreach($orders as $order)
-                <tr>
+                <tr >
                     <td style="color: #f71414 ;" class="h5">{{$order->order_for}}</td>
                     <td>{{$order->restaurant_name}}</td>
                     <td>{{$order->invites_count}}</td>
                     <td>{{$order->joined}}</td>
                     <td>{{$order->status}}</td>
-                    <td><img class="mb-5 col-5 frinimg" src="{{asset("$order->menu_image")}}" alt="menu_image"></td>
+                    <td><img class=" col-5 frinimg" src="{{asset("$order->menu_image")}}" alt="menu_image"></td>
                     <td>
                         <a href="{{route('orders.show',$order->id)}}" class="btn btn-primary">View</a>
                     </td>
