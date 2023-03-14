@@ -43,7 +43,7 @@ class OrderController extends Controller
     {
         //
         $user = User::find(auth()->id());
-        $orders=Order::where('user_id','=',auth()->id())->get();
+        $orders=Order::where('user_id','=',auth()->id())->paginate(2);
         foreach($orders as $order){
             $joined_count=Friend_order::where('order_id','=',$order->id)->where('status','=','joined')->count();
             $order->joined=$joined_count;

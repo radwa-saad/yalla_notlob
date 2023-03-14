@@ -52,7 +52,7 @@
 
     </table>
       <div class="d-flex">
-
+      {{$orders->links('pagination::bootstrap-5')}}
   </div>
 </div>
 
