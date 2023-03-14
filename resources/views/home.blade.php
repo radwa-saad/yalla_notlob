@@ -24,7 +24,7 @@
         <div class="col-md-5 text-center m-5 p-3  frindActivity">
             <div class="card">
                 <div class="card-header navo">
-                    Frindes Activity
+                    Your Activity
                 </div>
                 <div class="card-body ">
                   <p class="card-text">
