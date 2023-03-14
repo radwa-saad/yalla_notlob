@@ -17,16 +17,18 @@
                 <th>Invited</th>
                 <th>Joined</th>
                 <th>Status</th>
+                <th>menu_image</th>
                 <th colspan="3" class="text-center">Actions</th>
             </thead>
             <tbody style="color: white; font-wight:bold;">
-                @foreach($user->orders as $order)
+                @foreach($orders as $order)
                 <tr>
                     <td style="color: #f71414 ;" class="h5">{{$order->order_for}}</td>
                     <td>{{$order->restaurant_name}}</td>
                     <td>{{$order->invites_count}}</td>
-                    <td>{{$order->order_for}}</td>
+                    <td>{{$order->joined}}</td>
                     <td>{{$order->status}}</td>
+                    <td><img class="mb-5 col-5 frinimg" src="{{asset("$order->menu_image")}}" alt="menu_image"></td>
                     <td>
                         <a href="{{route('orders.show',$order->id)}}" class="btn btn-primary">View</a>
                     </td>
@@ -41,14 +43,16 @@
                             <button  type="submit" class="btn btn-danger">Cancel</button>
                         </form>
                         @endif
+
                     </td>
 
                 </tr>
                 @endforeach
             </tbody>
+
     </table>
       <div class="d-flex">
-    {{-- {{$orders->links('pagination::bootstrap-5')}} --}}
+      {{$orders->links('pagination::bootstrap-5')}}
   </div>
 </div>
 
