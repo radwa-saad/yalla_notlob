@@ -57,7 +57,7 @@
                     <ul class="navbar-nav ms-auto colo">
                          <!-- Notifications -->
                     <div class="dropdown mt-2">
-                        <a class="text-reset me-3 dropdown-toggle hidden-arrow row" href="#"
+                        <a class="text-reset me-3 hidden-arrow row" href="#"
                             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" v-pre>
                             <i class="fas fa-bell col-5 pt-2 mx-0"></i>
